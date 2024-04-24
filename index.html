@@ -3,43 +3,54 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GUY The Discord Bot!</title>
+    <title>Send to Discord</title>
     <style>
         body {
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
             background-color: #f0f0f0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
         }
-        header {
-            background-color: #333;
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #007bff;
             color: #fff;
-            padding: 20px;
-            text-align: center;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
         }
-        main {
-            padding: 20px;
-        }
-        footer {
-            background-color: #333;
-            color: #fff;
-            padding: 10px;
-            text-align: center;
-            position: fixed;
-            bottom: 0;
-            width: 100%;
+        button:hover {
+            background-color: #0056b3;
         }
     </style>
 </head>
 <body>
-    <header>
-        <h1>Welcome to the OFFICAL GUY website test!</h1>
-    </header>
-    <main>
-        <p>This is a simple website created using HTML and CSS.</p>
-    </main>
-    <footer>
-        <p>&copy; 2024 My Simple Website</p>
-    </footer>
+    <button id="sendButton">Send</button>
+
+    <script>
+        document.getElementById("sendButton").addEventListener("click", function() {
+            // Define the webhook URL
+            var webhookUrl = "https://discord.com/api/webhooks/1232637259044360212/KB8nxYCQv5_JkRWYMEmE3ja7q5ZP_bbWT9l_SB8IgrXh_ev_AC0eVFBexEn4Ie440vVr";
+
+            // Create the payload data
+            var payload = {
+                content: "Works"
+            };
+
+            // Create the request
+            var xhr = new XMLHttpRequest();
+            xhr.open("POST", webhookUrl);
+            xhr.setRequestHeader("Content-Type", "application/json");
+
+            // Send the request with the payload data
+            xhr.send(JSON.stringify(payload));
+        });
+    </script>
 </body>
 </html>
